@@ -1,0 +1,12 @@
+{
+  // Run/debug from the project root so PYTHONPATH=. in .env resolves correctly.
+  "python.terminal.executeInFileDir": false,
+
+  // Pylance: resolve `Classes`, `Helpers`, `Navigation` imports from the root.
+  "python.analysis.extraPaths": ["."],
+
+  // Testing: use pytest, discover tests in tests/.
+  "python.testing.pytestEnabled": true,
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestArgs": ["tests"]
+}

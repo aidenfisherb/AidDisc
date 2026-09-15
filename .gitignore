@@ -1,0 +1,25 @@
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Byte-compiled / caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Environment / secrets
+# (.env is committed here on purpose — it only sets PYTHONPATH.
+#  If you ever put secrets in it, uncomment the next line.)
+# .env
+
+# IDE
+.idea/

@@ -1,0 +1,6 @@
+[tool.pytest.ini_options]
+# Adds the project root to sys.path for every pytest run, so imports like
+# `from Classes.Course import Course` resolve regardless of where pytest
+# is invoked from.
+pythonpath = ["."]
+testpaths = ["tests"]
