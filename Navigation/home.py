@@ -1,11 +1,13 @@
 from nicegui import ui
 
 from Classes.Greeter import Greeter
-from Navigation.navbar import navbar
+from Navigation.components.navbar import navbar
+from Navigation.components.menu import menu
 
 @ui.page("/home")
 def home():
     navbar()
+    menu()
     with ui.column().classes("items-center gap-4 w-full mt-24"):
         ui.label("Class Instance Demo").classes("text-3xl font-semibold")
 

@@ -1,7 +1,7 @@
 from nicegui import ui
 
 from Classes.Greeter import Greeter
-from Navigation.navbar import navbar
+from Navigation.components.navbar import navbar
 
 @ui.page("/courses")
 def course_catalog():

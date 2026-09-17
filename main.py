@@ -8,6 +8,5 @@ import Navigation.rounds
 def index():
     ui.navigate.to("/home")
 
-
 if __name__ in {"__main__", "__mp_main__"}:
     ui.run(title="AidDisc")
