@@ -9,5 +9,7 @@ def navbar():
                 .props("flat round").tooltip("Home")
             ui.button(icon="golf_course", on_click=lambda: ui.navigate.to("/courses")) \
                 .props("flat round").tooltip("Courses")
-            ui.button(icon="scoreboard", on_click=lambda: ui.navigate.to("/rounds")) \
+            ui.button(icon="military_tech", on_click=lambda: ui.navigate.to("/rounds")) \
                 .props("flat round").tooltip("My Rounds")
+            ui.button(icon="scoreboard", on_click=lambda: ui.navigate.to("/scorecard")) \
+                .props("flat round").tooltip("Scorecard")

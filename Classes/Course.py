@@ -3,9 +3,10 @@ from dataclasses import dataclass
 
 @dataclass
 class Course:
-    def __init__(self, name, par, rating, difficulty, location):
+    def __init__(self, name, par, hole_count, rating, difficulty, location):
         self.name = name
         self.par = par
+        self.hole_count = hole_count
         self.rating = rating
         self.difficulty = difficulty
         self.location = location
@@ -17,18 +18,21 @@ class Course:
         print("Course Information:")
         print("Name: " + self.get_name())
         print("Par: " + str(self.get_par()))
+        print("Holes: " + str(self.get_hole_count()))
         print("Rating: " + str(self.get_rating()))
         print("Difficulty: " + self.get_difficulty())
         print("Location: " + self.get_location())
         print("====================================")
     # Setters
 
-    def alter_course(self, new_name=None, new_par=None, new_rating=None, new_difficulty=None, new_location=None):
+    def alter_course(self, new_name=None, new_par=None, new_hole_count=None, new_rating=None, new_difficulty=None, new_location=None):
         """Alter the properties of the course."""
         if hasattr(self, self.name):
             setattr(self, self.name, new_name)
         if hasattr(self, self.par):
             setattr(self, self.par, new_par)
+        if hasattr(self, self.hole_count):
+            setattr(self, self.hole_count, new_hole_count)
         if hasattr(self, self.rating):
             setattr(self, self.rating, new_rating)
         if hasattr(self, self.difficulty):
@@ -42,6 +46,9 @@ class Course:
 
     def set_par(self, par):
         self.par = par
+
+    def set_hole_count(self, hole_count):
+        self.hole_count = hole_count
 
     def set_rating(self, rating):
         self.rating = rating
@@ -58,6 +65,9 @@ class Course:
 
     def get_par(self):
         return self.par
+
+    def get_hole_count(self):
+        return self.hole_count
 
     def get_rating(self):
         return self.rating

@@ -3,6 +3,8 @@ from nicegui import ui
 import Navigation.home 
 import Navigation.course_catalog 
 import Navigation.rounds
+import Navigation.scorecard
+import Navigation.menu_items.play_round
 
 @ui.page("/")
 def index():

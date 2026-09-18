@@ -1,0 +1,5 @@
+[
+    {"name": "Whispering Pines Disc Golf Course", "par": "58", "hole_count": "18", "rating": "4.2", "difficulty": "Intermediate", "location": "Ashland, Oregon", "id": "1"}, 
+    {"name": "Copper Ridge DGC", "par": "63", "hole_count": "21", "rating": "3.7", "difficulty": "Beginner", "location": "Bozeman, Montana", "id": "2"},
+    {"name": "Thunder Hollow Disc Golf Park", "par": "72", "hole_count": "27", "rating": "4.6", "difficulty": "Advanced", "location": "Asheville, North Carolina", "id": "3"}
+]
