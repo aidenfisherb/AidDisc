@@ -5,6 +5,7 @@ import Navigation.course_catalog
 import Navigation.rounds
 import Navigation.scorecard
 import Navigation.menu_items.play_round
+import Navigation.menu_items.measure_distance
 
 @ui.page("/")
 def index():
