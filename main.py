@@ -3,6 +3,7 @@ from nicegui import ui
 import Navigation.home 
 import Navigation.course_catalog 
 import Navigation.rounds
+import Navigation.menu_items.measure_distance
 
 @ui.page("/")
 def index():
