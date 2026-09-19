@@ -4,6 +4,7 @@ from Classes.Greeter import Greeter
 from Navigation.components.navbar import navbar
 from Navigation.components.menu import menu
 import json
+import time
 
 @ui.page("/scorecard/{course_id}")
 def scorecard(course_id: str):
@@ -38,22 +39,27 @@ def scorecard(course_id: str):
     def assign_score():
         nonlocal current_hole
         if current_hole < len(score_labels):
-            score_labels[current_hole].set_text(scratch_label.text)
-            if int(scratch_label.text) == 3: #Value needs to be changed from 3 to whatever par is for hole
-                score_labels[current_hole].style(f"background-color: lightblue")
-            elif int(scratch_label.text) > 3:
-                score_labels[current_hole].style(f"background-color: red")
-            else:
-                score_labels[current_hole].style(f"background-color: lightgreen")
-            current_hole += 1
-            update_total()
-            change_score(scratch_label, 0, True)
+            if int(scratch_label.text) <= 0:
+                throw_error()
+            else:    
+                score_labels[current_hole].set_text(scratch_label.text)
+                if int(scratch_label.text) == 3: #Value needs to be changed from 3 to whatever par is for hole
+                    score_labels[current_hole].style(f"background-color: lightblue")
+                elif int(scratch_label.text) > 3:
+                    score_labels[current_hole].style(f"background-color: red")
+                else:
+                    score_labels[current_hole].style(f"background-color: lightgreen")
+                current_hole += 1
+                update_total()
+                change_score(scratch_label, 0, True)
 
     def update_total():
         nonlocal score_total
         score_total += int(scratch_label.text)
         score_total_label.set_text(str(score_total))
 
+    def throw_error():
+        ui.notify("Score cannot be negative, please try again.")
 
     with ui.column().classes("items-center gap-4 w-full mt-24"):
         ui.label(name).classes("text-3xl font-semibold")

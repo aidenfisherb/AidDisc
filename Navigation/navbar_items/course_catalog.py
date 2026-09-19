@@ -2,11 +2,13 @@ from nicegui import ui
 
 from Classes.Greeter import Greeter
 from Navigation.components.navbar import navbar
+from Navigation.components.menu import menu
+
 
 @ui.page("/courses")
 def course_catalog():
     navbar()
-
+    menu()
     with ui.row().classes("w-full flex-wrap justify-center items-stretch gap-6"):
         with ui.card().classes("w-full md:flex-1 md:max-w-md"):
             ui.image('https://picsum.photos/id/684/640/360')
