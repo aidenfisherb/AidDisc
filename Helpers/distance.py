@@ -28,3 +28,15 @@ def convert_distance(distance_meters, unit):
     if unit not in conversions:
         raise ValueError(f"Unsupported unit: {unit}")
     return distance_meters / conversions[unit]
+
+
+def average_readings(readings):
+    if not readings:
+        return None
+
+    best_accuracy = min(r[2] for r in readings)
+    good = [r for r in readings if r[2] <= 2 * best_accuracy]
+
+    avg_lat = sum(r[0] for r in good) / len(good)
+    avg_lon = sum(r[1] for r in good) / len(good)
+    return [avg_lat, avg_lon]
