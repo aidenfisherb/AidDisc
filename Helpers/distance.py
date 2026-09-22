@@ -40,3 +40,23 @@ def average_readings(readings):
     avg_lat = sum(r[0] for r in good) / len(good)
     avg_lon = sum(r[1] for r in good) / len(good)
     return [avg_lat, avg_lon]
+
+
+CAPTURE_SECONDS = 5
+
+CAPTURE_JS = f"""
+new Promise((resolve, reject) => {{
+    const readings = [];
+    const watchId = navigator.geolocation.watchPosition(
+        pos => readings.push([pos.coords.latitude, pos.coords.longitude, pos.coords.accuracy]),
+        err => {{ navigator.geolocation.clearWatch(watchId); reject(err); }},
+        {{ enableHighAccuracy: true, maximumAge: 0, timeout: 10000 }}
+    );
+    setTimeout(() => {{
+        navigator.geolocation.clearWatch(watchId);
+        resolve(readings);
+    }}, {CAPTURE_SECONDS * 1000});
+}})
+"""
+
+
