@@ -20,6 +20,7 @@ def distance_ui():
             markers[key] = m.marker(latlng=(lat, lon))
         else:
             markers[key].move(lat, lon)
+        markers[key].run_method("bindPopup", f"{key.capitalize()} point")
         m.set_center((lat, lon))
         m.set_zoom(35)
 
@@ -66,9 +67,6 @@ def distance_ui():
         end_button.set_visibility(False)
         calculate_button.set_visibility(False)
 
-
-    back_button()
-
     options = {
     'zoomControl': False,
     'scrollWheelZoom': False,
@@ -77,15 +75,18 @@ def distance_ui():
     'keyboard': False,
     'dragging': True,
 }
-    with ui.row().classes("w-full"):
+
+    BUTTON_CLASSES = "w-full max-w-xs"
+
+    with ui.header().classes("w-full bg-white shadow-md"):
+        back_button()
         m = ui.leaflet(center=(39, -98), zoom=4, options=options).classes("w-full h-[50vh]")
 
-    with ui.column().classes("items-center gap-4 w-full justify-center mt-4"):
-        title = ui.label("Where are you throwing from?").classes("text-3xl font-semibold mb-4")
-        start_button = ui.button("Start Measurement", on_click=handle_start_measure ).classes("bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded")
-        end_button = ui.button("End Measurement", on_click=handle_end_measure).classes("bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded")
-        calculate_button = ui.button("Calculate Distance", on_click=calculate_distance).classes("bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded")
-        result = ui.label().classes("text-lg text-slate-700")
-
+    with ui.footer().classes("bg-slate-800 w-full"):
+        with ui.column().classes("items-center gap-3 w-full p-4"):
+            title = ui.label("Where are you throwing from?").classes("text-2xl font-semibold text-white text-center")
+            start_button = ui.button("Start Measurement", on_click=handle_start_measure).props("color=green rounded").classes(BUTTON_CLASSES)
+            end_button = ui.button("End Measurement", on_click=handle_end_measure).props("color=red rounded").classes(BUTTON_CLASSES)
+            calculate_button = ui.button("Calculate Distance", on_click=calculate_distance).props("color=blue rounded").classes(BUTTON_CLASSES)
+            result = ui.label().classes("text-lg text-white text-center")
     reset()
-
