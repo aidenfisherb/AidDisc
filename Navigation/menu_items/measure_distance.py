@@ -52,6 +52,9 @@ def distance_ui():
             f"{convert_distance(meters, 'feet'):.1f} ft "
             f"({convert_distance(meters, 'yards'):.1f} yds)"
         )
+        calculate_button.set_visibility(False)
+        reset_button.set_visibility(True)
+
 
     def reset():
         points["start"] = None
@@ -66,6 +69,7 @@ def distance_ui():
         start_button.set_visibility(True)
         end_button.set_visibility(False)
         calculate_button.set_visibility(False)
+        reset_button.set_visibility(False)
 
     options = {
     'zoomControl': False,
@@ -88,5 +92,7 @@ def distance_ui():
             start_button = ui.button("Start Measurement", on_click=handle_start_measure).props("color=green rounded").classes(BUTTON_CLASSES)
             end_button = ui.button("End Measurement", on_click=handle_end_measure).props("color=red rounded").classes(BUTTON_CLASSES)
             calculate_button = ui.button("Calculate Distance", on_click=calculate_distance).props("color=blue rounded").classes(BUTTON_CLASSES)
+            reset_button = ui.button("Measure Again", on_click=reset).props("color=blue rounded").classes(BUTTON_CLASSES)
             result = ui.label().classes("text-lg text-white text-center")
+            ui.label("Distances can be off by ~10ft").classes("text-sm text-slate-400 text-center")
     reset()
